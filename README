@@ -9,3 +9,8 @@ SQLite: http://www.hwaci.com/sw/sqlite/
 mod_sqlite: http://modsqlite.sourceforge.net/
 
 Aaron Patterson, http://eviladmins.org/~aaron/
+
+**************************************************************************
+
+In July 2022 I have adapted mod_sqlite to sqlite3 and published on GitHub.
+Pierre Forstmann.
