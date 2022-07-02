@@ -16,5 +16,5 @@ In July 2022 I have adapted mod_sqlite to sqlite3 and published on GitHub.
 
 First tests have been run on Alma Linux 8.6 with Apache 2.4.37.
 
-SQLite database has been created in /tmp after disabling PrivateTmp=True in  Adapted from mod_sqlite to sqlite3.
+SQLite database has been created in /tmp after disabling PrivateTmp=True in /usr/lib/systemd/system/httpd.service.
 If SQLite database is created in /var and SE Linux is enabled Apache may not be able to access database.
