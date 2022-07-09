@@ -7,9 +7,10 @@
 
 ## Installing mod_sqlite
 
+    make
     sudo make install
 
-## Configuring Apache with mod_sqlite3
+## Configuring Apache with mod_sqlite
 
 Edit your httpd.conf and add the following line to tell Apache to load the
 sqlite3 module:
