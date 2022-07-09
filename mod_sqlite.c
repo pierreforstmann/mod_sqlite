@@ -395,9 +395,6 @@ static int sqlite_handler(request_rec *r)
                 "Error executing query: %s", errmsg);
         apr_table_set(r->err_headers_out, ERROR_HEADER, errmsg);
         sqlite3_free(errmsg);
-        ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server, "before free(pq)");
-        sqlite3_free(query);
-        ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server, "after free(pq)");
         return HTTP_INTERNAL_SERVER_ERROR;
     }
     
