@@ -80,18 +80,18 @@ threw.
 ### Advanced Apache Configuration
 
 mod_sqlite provides a few other Apache configuration directives that allow you
-to tweak the way mod_sqlite3 performs queries.  Here is a list of directives
+to tweak the way mod_sqlite performs queries.  Here is a list of directives
 and what they do:
 
     SQLiteDB /foo/bar.txt
 
-SQLiteDB specifies what database mod_sqlite3 should read from.  mod_sqlite3 will
+SQLiteDB specifies what database mod_sqlite should read from.  mod_sqlite will
 read from that specified database and ignore the 'db' query parameter if
 SQLiteDB is set.
 
     SQLiteQuery "select * from test"
 
-SQLiteQuery specifies what query mod_sqlite3 should execute.  mod_sqlite3 will
+SQLiteQuery specifies what query mod_sqlite should execute.  mod_sqlite will
 ignore the 'q' query parameter if SQLiteQuery is set in the Apache
 configuration.
 
