@@ -5,7 +5,7 @@
     3. httpd 2.4.37
     4. httpd-devel 2.4.37
 
-## Installing mod_sqlite:
+## Installing mod_sqlite
 
     sudo make install
 
