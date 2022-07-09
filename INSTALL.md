@@ -29,7 +29,7 @@ configuration:
 Access control can be used for different location through Apache's built in
 user control system.  Check out Apache documentation for Authentication if you
 need more information ( http://httpd.apache.org/docs-2.0/howto/auth.html ).
-Here is an example of mod_sqlite3 using basic authentication:
+Here is an example of mod_sqlite using basic authentication:
 
     <Location /test>
         AuthType Basic
@@ -44,7 +44,7 @@ Here is an example of mod_sqlite3 using basic authentication:
 ## Using mod_sqlite:
 
 mod_sqlite allows you to access your SQLite database over HTTP.  To do this,
-the Location that you have configured mod_sqlite3 to use will take query
+the Location that you have configured mod_sqlite to use will take query
 parameters that allow the user to query the database.  Here is a list of those
 parameters, and what they do:
 
