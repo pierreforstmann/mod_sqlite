@@ -12,10 +12,9 @@
 
 ## Configuring Apache with mod_sqlite
 
-Edit your httpd.conf and add the following line to tell Apache to load the
-sqlite3 module:
+Edit your `/etc/httpd/conf/httpd.conf` and add the following line to tell Apache to load mod_sqlite:
 
-    LoadModule sqlite_module  modules/mod_sqlite.so
+    LoadModule sqlite_module /usr/lib64/httpd/modules/mod_sqlite.so
 
 Once Apache has the module loaded, you can set up a location to host your
 SQLite database.  Here is an example of the simplest mod_sqlite location
