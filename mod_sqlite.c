@@ -400,7 +400,6 @@ static int sqlite_handler(request_rec *r)
         ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server, "after free(pq)");
         return HTTP_INTERNAL_SERVER_ERROR;
     }
-    sqlite3_free(query);
     
     return OK;
 }
