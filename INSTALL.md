@@ -55,7 +55,7 @@ parameters, and what they do:
 
 Usage examples:
 
-To query the database 'var/tmp/foo.txt' with the SQL 'select * from test', the
+To query the database `/var/tmp/foo.txt` with the SQL `select * from test`, the
 query would look like this:
 
     http://localhost/test?db=/var/tmp/foo.txt&q=select%20*%20from%20test
