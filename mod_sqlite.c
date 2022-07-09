@@ -9,7 +9,7 @@
  *  http://modsqlite.sourceforge.net/
  *
  * 02-JUL-2022 Pierre Forstmann
- * Adapted from mod_sqlite to sqlite3.
+ * Adapted to sqlite3.
  */
 #include "apr_buckets.h"
 #include "util_filter.h"
