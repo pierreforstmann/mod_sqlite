@@ -73,7 +73,7 @@ A result set might look something like this:
 
 Error handling:
 
-If any errors occur mod_sqlite3 will set a special header in the HTTP response
+If any errors occur mod_sqlite will set a special header in the HTTP response
 called 'X-SQLite-Error'.  'X-SQLite-Error' will contain the error that SQLite
 threw.
 
@@ -97,9 +97,9 @@ configuration.
 
     SQLiteBaseDir /home/aaron
 
-SQLiteBaseDir specifies where mod_sqlite3 will look for databases.  So if the
-'db' parameter is set to 'foo.txt', then mod_sqlite3 will try to read
-'/home/aaron/foo.txt'.  If SQLiteBaseDir is not set, mod_sqlite3 assumes that the
+SQLiteBaseDir specifies where mod_sqlite will look for databases.  So if the
+'db' parameter is set to 'foo.txt', then mod_sqlite will try to read
+'/home/aaron/foo.txt'.  If SQLiteBaseDir is not set, mod_sqlite assumes that the
 'db' parameter is a complete file path to the database.
 
 Example configuration:
