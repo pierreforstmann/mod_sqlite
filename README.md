@@ -1,5 +1,5 @@
 mod_sqlite is an Apache module which provides access to SQLite databases over HTTP.  
-See README.2004.txt for original README.
+See README.2004 for original README.
 
 Please see INSTALL.md for how to install and configure mod_sqlite.
 
