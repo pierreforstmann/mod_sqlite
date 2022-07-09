@@ -1,15 +1,16 @@
-## Prerequisites to installation:
+## Prerequisites to installation on AlmaLinux 8.6
 
-    1. SQLite http://www.hwaci.com/sw/sqlite/
-       If you install via RPM make sure to install the devel package.
+    1. sqlite 3.0.26
+    
+    2. sqlite-devel 3.0.26 
 
-    2. Apache 2 compiled *with* DSO support. http://httpd.apache.org/
+    3. httpd 2.4.37
+    
+    4. httpd-devel 2.4.37
 
-## Installing mod_sqlite3:
+## Installing mod_sqlite:
 
-    1. Edit the Makefile to point to apxs
-
-    2. Run 'make install'
+    2. Run 'sudo make install'
 
 ## Configuring Apache with mod_sqlite3
 
@@ -56,10 +57,10 @@ parameters, and what they do:
 
 Usage examples:
 
-To query the database '/tmp/foo.txt' with the SQL 'select * from test', the
+To query the database 'var/tmp/foo.txt' with the SQL 'select * from test', the
 query would look like this:
 
-    http://localhost/test?db=/tmp/foo.txt&q=select%20*%20from%20test
+    http://localhost/test?db=/var/tmp/foo.txt&q=select%20*%20from%20test
 
 Return values:
 
