@@ -62,7 +62,7 @@ query would look like this:
 
 Return values:
 
-After executing a query, mod_sqlite3 will return the results URI encoded and
+After executing a query, mod_sqlite will return the results URI encoded and
 separated by semicolons.  The first line of the results will always be the
 column names corresponding to the data.  Each row is separated by a newline.
 A result set might look something like this:
