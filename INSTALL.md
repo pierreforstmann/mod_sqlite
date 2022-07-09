@@ -18,7 +18,7 @@ sqlite3 module:
     LoadModule sqlite_module  modules/mod_sqlite.so
 
 Once Apache has the module loaded, you can set up a location to host your
-SQLite database.  Here is an example of the simplest mod_sqlite3 location
+SQLite database.  Here is an example of the simplest mod_sqlite location
 configuration:
 
     <Location /test>
