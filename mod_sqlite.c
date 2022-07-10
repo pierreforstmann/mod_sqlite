@@ -289,12 +289,6 @@ static int sqlite_handler(request_rec *r)
     } else {
         return DECLINED;
     }
-    /*
-     * ! This is not SQLite version.
-     *
-     *ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
-     *           "SQLite version: %s", VERSION);
-     */
 
     /* Set the content type. */
     ap_set_content_type(r, "text");
@@ -311,7 +305,8 @@ static int sqlite_handler(request_rec *r)
         if(! db_name) {
             apr_table_set(r->err_headers_out, ERROR_HEADER,
                     "No Database name specified");
-            return HTTP_INTERNAL_SERVER_ERROR;
+            ap_rputs("ERROR: no database name specified\n", r);
+            return OK;
         }
 
         /* Strip out any relative path components. */
@@ -331,7 +326,8 @@ static int sqlite_handler(request_rec *r)
     if(stat(db_name, &db_stat) != 0) {
     	ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
                 "db_name: %s not found errno=%d", db_name, errno);
-        return HTTP_NOT_FOUND;
+        ap_rputs("ERROR: database not found\n", r);
+        return OK;
     }
 
     if(config->query != NULL) {
@@ -343,7 +339,8 @@ static int sqlite_handler(request_rec *r)
     if(! query) {
         apr_table_set(r->err_headers_out, ERROR_HEADER,
                 "No query specified");
-        return HTTP_INTERNAL_SERVER_ERROR;
+        ap_rputs("ERROR: no query specified\n", r);
+        return OK;
     }
 
     sqlite_cb_s.r = r;
@@ -354,8 +351,9 @@ static int sqlite_handler(request_rec *r)
     if(rc != SQLITE_OK) {
         ap_log_error(APLOG_MARK, APLOG_ERR, 0, r->server,
                 "Error opening db %s: %s", db_name, sqlite3_errmsg(db));
-        apr_table_set(r->err_headers_out, ERROR_HEADER, sqlite3_errmsg(db));
-        return HTTP_INTERNAL_SERVER_ERROR;
+        apr_table_mergen(r->headers_out, ERROR_HEADER, sqlite3_errmsg(db));
+        ap_rputs("ERROR: error opening database\n", r);
+	return OK;
     }
     ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, r->server,
                 "Connected to database: %s", db_name);
@@ -368,7 +366,8 @@ static int sqlite_handler(request_rec *r)
     if (rc != SQLITE_OK) {
         ap_log_error(APLOG_MARK, APLOG_ERR, 0, r->server,
                 "Error executing query: %s", "SELECT SQLITE VERSION()");
-        return HTTP_INTERNAL_SERVER_ERROR;
+        ap_rputs("ERROR: error preparing SELECT SQLITE_VERSION \n", r);
+        return OK;
     }    
 
     rc = sqlite3_step(res);
@@ -378,7 +377,8 @@ static int sqlite_handler(request_rec *r)
     } else {
         ap_log_error(APLOG_MARK, APLOG_ERR, 0, r->server,
                 "Failed to get SQLite version: %s", sqlite3_errmsg(db));
-        return HTTP_INTERNAL_SERVER_ERROR;
+        ap_rputs("ERROR: error executing SELECT SQLITE_VERSION \n", r);
+        return OK;
     }
 
 
@@ -394,8 +394,9 @@ static int sqlite_handler(request_rec *r)
         ap_log_error(APLOG_MARK, APLOG_ERR, 0, r->server,
                 "Error executing query: %s", errmsg);
         apr_table_set(r->err_headers_out, ERROR_HEADER, errmsg);
+        ap_rprintf(r, "ERROR: error executing query: %s \n", errmsg);
         sqlite3_free(errmsg);
-        return HTTP_INTERNAL_SERVER_ERROR;
+        return OK;
     }
     
     return OK;
