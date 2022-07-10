@@ -72,7 +72,7 @@ A result set might look something like this:
 
 Error handling:
 
-If any errors occur mod_sqlite returns HTTP_INTERNAL_SERVER_ERROR without SQLite error message.
+If any errors occur with SQLlite mod_sqlite returns HTTP_OK with SQLite error message starting with "ERROR:".
 
 ### Advanced Apache Configuration
 
